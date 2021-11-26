@@ -1,0 +1,6 @@
+[submodule "extern/hidapi"]
+	path = extern/hidapi
+	url = https://github.com/libusb/hidapi.git
+[submodule "extern/vcpkg"]
+	path = extern/vcpkg
+	url = https://github.com/microsoft/vcpkg.git

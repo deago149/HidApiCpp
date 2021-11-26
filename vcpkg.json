@@ -1,0 +1,10 @@
+{
+    "name": "hidapicpp",
+    "version": "0.0.1",
+    "port-version": 1,
+    "description": "C++ Header Only Wrpper Library For hidapi",
+    "dependencies": [
+        "gtest",
+        "cli11"
+    ]   
+}
