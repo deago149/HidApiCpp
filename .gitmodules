@@ -4,3 +4,6 @@
 [submodule "extern/vcpkg"]
 	path = extern/vcpkg
 	url = https://github.com/microsoft/vcpkg.git
+[submodule "extern/FFF"]
+	path = extern/FFF
+	url = https://github.com/meekrosoft/fff.git

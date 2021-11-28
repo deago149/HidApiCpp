@@ -15,24 +15,29 @@ configure_file (
 include(CTest) # note: this adds a BUILD_TESTING which defaults to ON
 
 #Append Scripts To Seach Path 
-list(APPEND CMAKE_MODULE_PATH Scripts/CMake)
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/scripts/CMake)
 
 #Check For Git And Doxygen
 find_package(Git REQUIRED)     # Git
 find_package(Doxygen QUIET)    # Doxygen
 
+#Includes
+#Submodule Macro
+include(scripts/CMake/PullSubmoduleMacro.cmake)
+#Add vcpkg
+include(extern/vcpkg/scripts/buildsystems/vcpkg.cmake)
+
 #Pull Submodules
-include(Scripts/CMake/PullSubmoduleMacro.cmake)
 PullSubmodules()
 
-#Add vcpkg
-include(Extern/vcpkg/scripts/buildsystems/vcpkg.cmake)
+
 
 #add SubProjects
 add_subdirectory(extern/hidapi)
 #find Libraries
 find_package(GTest CONFIG REQUIRED)
 find_package(CLI11 CONFIG REQUIRED)
+find_package(FFF REQUIRED)
 #add Source & App
 add_subdirectory(src)
 add_subdirectory(app)
