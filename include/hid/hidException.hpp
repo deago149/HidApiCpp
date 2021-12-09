@@ -2,17 +2,26 @@
 #include <iostream>
 #include <exception>
 #include <hidapi.h>
-class HIDException : public std::exception
-{
-private:
-     const char *Message;
-     const char *HidError;
-     hid_device *HIDError_Device;
-public:
-    const char* what() const throw();
-    const char* hid_error() const throw();
-    HIDException(hid_device *Error_Device, std::string message);
-    HIDException(hid_device *Error_Device, const char* message);
+
+namespace HID{
+    
+    class HIDException: public std::runtime_error{
+        private:
+            const char * Error;
+        public:
+            const char *what() const noexcept ;
+            HIDException(const char *Message) noexcept;
+            HIDException(std::string& Message) noexcept;
+            ~HIDException() noexcept = default;
+    };
+
+    class InitException : public HIDException{
+        private:
+            std::string Message;
+        public:
+            const char* what() const noexcept;
+            InitException(const char *Message) noexcept;
+            InitException(std::string&  Message) noexcept;
+            ~InitException() noexcept = default;
+    };
 };
-
-
