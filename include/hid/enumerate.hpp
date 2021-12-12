@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <hidapi.h>
+#include <hid/Device.hpp>
 
 namespace HID{
     class Enumerate{
@@ -10,7 +11,8 @@ namespace HID{
             unsigned short _Product_ID = 0x0;
             //hid_device_info *Device_List = nullptr;
         public:
-            void Devices();
+        //  std::string CheckError();
+            std::vector<HID::Device> Devices();
             Enumerate();
             Enumerate(unsigned short Vendor_ID, unsigned short Product_ID);
             ~Enumerate();
