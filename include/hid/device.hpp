@@ -3,12 +3,13 @@
 #include <iostream>
 #include <hidapi.h>
 
-namespace HID{
+namespace HIDAPI{
     class Device{
         private:
             hid_device *HIDDevice;
         public:
             Device(std::string path);
+            Device(unsigned short VENDOR_ID, unsigned short PRODUCT_ID);
             Device(unsigned short VENDOR_ID, unsigned short PRODUCT_ID, std::wstring serial_number);
             ~Device();
             void Write(std::vector<uint8_t> data);

@@ -3,19 +3,19 @@
 #include <exception>
 #include <hidapi.h>
 
-namespace HID{
+namespace HIDAPI{
     
-    class HIDException: public std::runtime_error{
+    class Exception: public std::runtime_error{
         private:
             const char * Error;
         public:
             const char *what() const noexcept ;
-            HIDException(const char *Message) noexcept;
-            HIDException(std::string& Message) noexcept;
-            ~HIDException() noexcept = default;
+            Exception(const char *Message) noexcept;
+            Exception(std::string& Message) noexcept;
+            ~Exception() noexcept = default;
     };
 
-    class InitException : public HIDException{
+    class InitException : public HIDAPI::Exception{
         private:
             std::string Message;
         public:
