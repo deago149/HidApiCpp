@@ -1,8 +1,5 @@
-#include "HIDDeviceTests.hpp"
-#include "HIDEnumerateTests.hpp"
-#include "HIDOpenDeviceTests.hpp"
-
-
+#include <gtest/gtest.h>
+#include "APITests.hpp"
 int main(int argc, char **argv)
 {
     ::testing::InitGoogleTest(&argc, argv);

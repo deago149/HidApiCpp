@@ -1,7 +1,7 @@
 #include <iostream>
-#include <hid/enumerate.hpp>
+#include <hid/HID.hpp>
 int main(int argc, char const *argv[])
 {
-	HID::Enumerate hidDevices(0,0);
+	//HID::Enumerate hidDevices(0,0);
 	return 0;
 }

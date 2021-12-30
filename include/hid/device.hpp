@@ -3,20 +3,19 @@
 #include <iostream>
 #include <hidapi.h>
 
-namespace HIDAPI{
+namespace HID{
     class Device{
         private:
-            hid_device *HIDDevice;
+            hid_device *DeviceHandle;
         public:
-            Device(std::string path);
-            Device(unsigned short VENDOR_ID, unsigned short PRODUCT_ID);
+            Device(std::string& path);
             Device(unsigned short VENDOR_ID, unsigned short PRODUCT_ID, std::wstring serial_number);
             ~Device();
-            void Write(std::vector<uint8_t> data);
+            int Write(std::vector<uint8_t>& data);
             std::vector<uint8_t> Read();
             std::vector<uint8_t> ReadTimeout(size_t milliseconds);
-            void NonBlocking(int nonblocking);
-            void SendFeatureReport(std::string data);
+            int NonBlocking(int nonblocking);
+            int SendFeatureReport(std::string data);
             std::string GetFeatureReport();
             std::string GetInputReport();
             std::wstring GetManufacturerString();

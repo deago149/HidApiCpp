@@ -1,12 +1,13 @@
 #pragma once
+/*
 extern "C" {
     #include <fff.h>
     #include <hidapi.h>
 }
 #include <cstdlib>
 #include <gtest/gtest.h>
-#include <hid/enumerate.hpp>
-#include <hid/hidException.hpp>
+#include <hid/HID.hpp>
+#include <hid/Exception.hpp>
 
 
 DEFINE_FFF_GLOBALS;
@@ -133,4 +134,4 @@ TEST_F(HIDEnumeratorTests, HIDEnumerateThrowsErrorIf){
     ASSERT_EQ(VENDOR_ID, hid_enumerate_fake.arg0_history[0]);
     ASSERT_EQ(PRODUCT_ID, hid_enumerate_fake.arg1_history[0]);
 }
-
+*/

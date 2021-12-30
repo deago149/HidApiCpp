@@ -1,15 +1,19 @@
-#include <hid/device.hpp>
+#include <hid/Device.hpp>
 
-HID::Device::Device(hid_device_info* DeviceInfo):
-path(DeviceInfo->path),
-vendor_id(DeviceInfo->vendor_id),
-product_id(DeviceInfo->product_id),
-serial_number(DeviceInfo->serial_number),
-release_number(DeviceInfo->release_number),
-manufacturer_string(DeviceInfo->manufacturer_string),
-product_string(DeviceInfo->product_string),
-usage_page(DeviceInfo->usage_page),
-usage(DeviceInfo->usage)
+HID::Device::Device(std::string& path): DeviceHandle(hid_open_path(path.c_str()))
+{}
+
+HID::Device::Device(unsigned short VENDOR_ID, unsigned short PRODUCT_ID, std::wstring serial_number):
+DeviceHandle(hid_open(VENDOR_ID, PRODUCT_ID, serial_number.c_str()))
+{}
+
+HID::Device::~Device()
 {
-    
+    hid_close(DeviceHandle);
+}
+
+int HID::Device::Write(std::vector<uint8_t>& data){
+    if (data.empty())
+        return data.size();
+    return hid_write(this->DeviceHandle, data.data(), data.size());
 }

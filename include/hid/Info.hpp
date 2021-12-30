@@ -3,7 +3,7 @@
 #include <hidapi.h>
 #include <hid/Device.hpp>
 
-namespace HIDAPI{
+namespace HID{
     class Info{
         private:
             std::string path;
